@@ -20,5 +20,10 @@
 
 3. UpdateManager负责apk包的断点下载，更新通知栏。
 
+![截图1](art/screenshot1.png)
+![截图2](art/screenshot2.png)
 
-##### Demo中使用[淘宝RAP](http://rap.taobao.org/)的模拟API， HTTP请求使用okhttp，JSON解析使用fastjson，感谢！
+### 感谢:
+* Demo中使用[淘宝RAP](http://rap.taobao.org/)模拟检查更新API
+* apk下载地址是微信官网apk下载地址，版本更新说明也摘自微信官网
+* HTTP请求使用okhttp，JSON解析使用fastjson
