@@ -160,7 +160,7 @@ public class UpdateLogDialog extends Dialog {
         if (!(version.contains("V") || version.contains("v"))) {
             version = "V" + version;
         }
-        mVersionTv.setText(version);
+        mVersionTv.setText(mUpdateInfo.getTitle() + version);
         mContentTv.setText(mUpdateInfo.getUpdatecontent());
         show();
     }
