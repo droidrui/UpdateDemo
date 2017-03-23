@@ -1,22 +1,24 @@
-# TaskDemo
-这个一个简单易用、解耦业务、避免内存泄漏的Android异步任务库，异步处理思想参考RxJava。
+# UpdateDemo
+这个一个App检查版本更新的Demo，满足实际项目需求。
 
-### Task解决我在实际开发中的几个痛点：
+### Demo中实现的功能有：
 
-* 一个任务要有统一的错误处理结果返回（Android自带的AsyncTask就没有错误返回）
-* 把任务分离出Activity（这样任务还可以重用）
-* 任务运行过程中的回调（比如提示上传第n张图片）
-* 不用担心异步任务有内存泄漏
+1. 后台检查更新和手动检查更新
+2. 忽略5次版本才真正忽略，每次忽略，在WIFI网络下，后台静默断点下载apk
+3. 需要强制更新时，不能取消Dialog显示
+4. 通知栏显示下载apk进度，下载失败时，可点击通知重新断点下载
+5. 5次忽略版本之间，弹出Dialog需要间隔1小时，否则不弹出
+6. 手动检查更新必弹Dialog
+7. 二级Dialog在非WIFI网络时弹出，提示用户是否更新
+8. 根据接口字段决定是否向用户弹出版本更新Dialog
 
 ### 主要类说明：
 
-1. Task参考RxJava的Observable，在静态方法中new Task，封装异步任务。
+1. UpdateLogDialog显示版本更新日志。
 
-2. TaskManager负责管理Task的弱引用，在Activity onCreate时初始化，onDestroy时解开Task的回调，避免内存泄漏。
+2. UpdateAlertDialog显示非WIFI网络时，提示用户是否继续更新
 
-3. TaskCallback是Task的回调，包含onError(TaskError e) onSuccess(T result) onFinish() onMessage(int arg1, int arg2, Object obj)，满足一般项目的需求。
-
-4. TaskError是Task的错误结果，包含code strCode msg throwable。
+3. UpdateManager负责apk包的断点下载，更新通知栏。
 
 
-##### demo中使用干货（ http://gank.io ）的API， HTTP请求使用okhttp，JSON解析使用fastjson，感谢！
+##### Demo中使用[淘宝RAP](http://rap.taobao.org/)的模拟API， HTTP请求使用okhttp，JSON解析使用fastjson，感谢！
