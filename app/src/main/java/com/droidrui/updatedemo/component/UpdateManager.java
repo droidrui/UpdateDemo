@@ -39,7 +39,7 @@ public class UpdateManager {
     private static final int WHAT_PROGRESS = 3;
     private static final int WHAT_ERROR = -1;
 
-    private static UpdateManager sInstance;
+    private static volatile UpdateManager sInstance;
 
     public static UpdateManager getInstance() {
         if (sInstance == null) {
